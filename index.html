@@ -406,8 +406,22 @@
             <span class="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-800 bg-emerald-950 font-mono text-sm font-bold text-emerald-400">✓</span>
             <h4 class="font-mono text-xs font-bold uppercase tracking-wide text-emerald-400">Workspace Environment Queued</h4>
             <p class="mx-auto mt-1 max-w-xs text-[11px] text-slate-300">
-              Your sandbox context configuration is active. Check your email inbox to complete OAuth 2.0 authorization steps.
+              Your sandbox context configuration is active. Continue to HubSpot authorization to start the secure sync.
             </p>
+            <a
+              id="pilotAuthLink"
+              href="#"
+              class="mt-4 inline-flex rounded bg-cyan-500 px-4 py-2 font-mono text-[11px] font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600"
+            >
+              Continue to HubSpot
+            </a>
+          </div>
+
+          <div id="pilotError" class="relative hidden rounded-lg border border-red-900/60 bg-red-950/30 p-3 text-xs text-red-200"></div>
+
+          <div id="pilotLoading" class="relative hidden py-6 text-center">
+            <p class="font-mono text-xs font-bold uppercase tracking-wide text-cyan-300">Provisioning secure pilot workspace...</p>
+            <p class="mx-auto mt-1 max-w-xs text-[11px] text-slate-400">Creating tenant isolation, OAuth state, and onboarding queue.</p>
           </div>
         </div>
       </section>
@@ -426,6 +440,7 @@
     </div>
 
     <script>
+      const PACELOCK_GRAPHQL_ENDPOINT = 'https://beat-hubspot-api.onrender.com/graphql';
       const toast = document.getElementById('toast');
       document.querySelectorAll('.action-button').forEach((button) => {
         button.addEventListener('click', () => {
@@ -439,21 +454,72 @@
         });
       });
 
-      function handlePilotSubmission(event) {
+      async function handlePilotSubmission(event) {
         event.preventDefault();
 
-        const company = document.getElementById('pilotCompany').value;
-        const portalId = document.getElementById('pilotPortal').value;
-        const email = document.getElementById('pilotEmail').value;
+        const form = document.getElementById('pilotForm');
+        const success = document.getElementById('pilotSuccess');
+        const errorBox = document.getElementById('pilotError');
+        const loading = document.getElementById('pilotLoading');
+        const authLink = document.getElementById('pilotAuthLink');
 
-        console.log('Routing pilot data payload parameters to Render API stack:', {
-          company,
-          portalId,
-          email
-        });
+        const companyName = document.getElementById('pilotCompany').value;
+        const hubspotPortalId = document.getElementById('pilotPortal').value;
+        const corporateEmail = document.getElementById('pilotEmail').value;
 
-        document.getElementById('pilotForm').classList.add('hidden');
-        document.getElementById('pilotSuccess').classList.remove('hidden');
+        errorBox.classList.add('hidden');
+        errorBox.textContent = '';
+        form.classList.add('hidden');
+        loading.classList.remove('hidden');
+
+        try {
+          const response = await fetch(PACELOCK_GRAPHQL_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              accept: 'application/graphql-response+json'
+            },
+            body: JSON.stringify({
+              query: `
+                mutation RequestPilot($input: RequestPilotInput!) {
+                  requestSystemPilot(input: $input) {
+                    success
+                    message
+                    authorizationUrl
+                  }
+                }
+              `,
+              variables: {
+                input: {
+                  companyName,
+                  hubspotPortalId,
+                  corporateEmail
+                }
+              }
+            })
+          });
+
+          const result = await response.json();
+          const graphqlError = result.errors?.[0]?.message;
+          const mutationResult = result.data?.requestSystemPilot;
+
+          if (!response.ok || graphqlError || !mutationResult?.success) {
+            throw new Error(graphqlError || mutationResult?.message || 'Pilot provisioning failed.');
+          }
+
+          authLink.href = mutationResult.authorizationUrl;
+          loading.classList.add('hidden');
+          success.classList.remove('hidden');
+
+          window.setTimeout(() => {
+            window.location.href = mutationResult.authorizationUrl;
+          }, 1800);
+        } catch (error) {
+          loading.classList.add('hidden');
+          form.classList.remove('hidden');
+          errorBox.textContent = error instanceof Error ? error.message : 'Failed to connect to PaceLock provisioning.';
+          errorBox.classList.remove('hidden');
+        }
       }
 
       document.getElementById('pilotForm')?.addEventListener('submit', handlePilotSubmission);
