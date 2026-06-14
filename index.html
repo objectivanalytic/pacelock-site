@@ -359,43 +359,44 @@
             <p class="mt-1 text-xs text-slate-400">Connect your workspace securely to calculate your pipeline integrity score.</p>
           </div>
 
-          <form id="pilotForm" class="relative space-y-4 text-xs">
+          <form id="pilotForm" class="relative space-y-4 text-xs" novalidate>
             <div>
               <label for="pilotCompany" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Company Name</label>
               <input
                 type="text"
-                required
                 id="pilotCompany"
                 placeholder="Acme Logistics Enterprise"
                 class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
               />
+              <p id="error-company" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
             </div>
             <div>
               <label for="pilotPortal" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">HubSpot Portal ID</label>
               <input
                 type="text"
-                required
                 id="pilotPortal"
                 inputmode="numeric"
                 placeholder="e.g., 9991234"
                 class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-mono text-slate-200 outline-none transition focus:border-cyan-500"
               />
+              <p id="error-portal" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
             </div>
             <div>
               <label for="pilotEmail" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Corporate Contact Email</label>
               <input
-                type="email"
-                required
+                type="text"
                 id="pilotEmail"
                 placeholder="revops@yourcompany.com"
                 class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
               />
+              <p id="error-email" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
             </div>
 
             <div class="pt-2">
               <button
+                id="submitBtn"
                 type="submit"
-                class="w-full cursor-pointer rounded bg-cyan-500 py-2.5 font-mono font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600"
+                class="w-full cursor-pointer rounded bg-cyan-500 py-2.5 font-mono font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 Provision Free Pipeline Audit
               </button>
@@ -441,7 +442,15 @@
 
     <script>
       const PACELOCK_GRAPHQL_ENDPOINT = 'https://beat-hubspot-api.onrender.com/graphql';
+      const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const PUBLIC_DOMAINS = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
+      const fieldIdMap = {
+        company: 'pilotCompany',
+        portal: 'pilotPortal',
+        email: 'pilotEmail'
+      };
       const toast = document.getElementById('toast');
+
       document.querySelectorAll('.action-button').forEach((button) => {
         button.addEventListener('click', () => {
           toast.classList.remove('hidden');
@@ -454,6 +463,57 @@
         });
       });
 
+      function setFieldState(input, errorEl, errorMessage) {
+        input.classList.remove('border-slate-800', 'border-red-500/80', 'border-emerald-800/80', 'focus:border-red-500', 'focus:border-cyan-500');
+
+        if (errorMessage) {
+          input.classList.add('border-red-500/80', 'focus:border-red-500');
+          errorEl.textContent = `x ${errorMessage}`;
+          errorEl.classList.remove('hidden');
+          return false;
+        }
+
+        input.classList.add('border-emerald-800/80', 'focus:border-cyan-500');
+        errorEl.textContent = '';
+        errorEl.classList.add('hidden');
+        return true;
+      }
+
+      function validateField(fieldName) {
+        const input = document.getElementById(fieldIdMap[fieldName]);
+        const errorEl = document.getElementById(`error-${fieldName}`);
+        const value = input.value.trim();
+        let errorMessage = '';
+
+        if (fieldName === 'company') {
+          if (value.length === 0) errorMessage = 'Company Name is required for workspace isolation.';
+          else if (value.length < 2) errorMessage = 'Company Name must be at least 2 characters.';
+        }
+
+        if (fieldName === 'portal') {
+          if (value.length === 0) errorMessage = 'HubSpot Portal ID is required to route your data.';
+          else if (/\D/.test(value)) errorMessage = 'Portal ID must contain numbers only. Letters and symbols are blocked.';
+          else if (value.length < 5 || value.length > 12) errorMessage = 'Portal IDs are typically 5 to 12 digits.';
+        }
+
+        if (fieldName === 'email') {
+          if (value.length === 0) errorMessage = 'Corporate email is required to deliver authorization steps.';
+          else if (!EMAIL_REGEX.test(value)) errorMessage = 'Invalid email format. Please check your spelling.';
+          else {
+            const domain = value.split('@')[1].toLowerCase();
+            if (PUBLIC_DOMAINS.includes(domain)) {
+              errorMessage = 'Public email domains are blocked. Use an enterprise corporate email.';
+            }
+          }
+        }
+
+        return setFieldState(input, errorEl, errorMessage);
+      }
+
+      ['company', 'portal', 'email'].forEach((fieldName) => {
+        document.getElementById(fieldIdMap[fieldName])?.addEventListener('input', () => validateField(fieldName));
+      });
+
       async function handlePilotSubmission(event) {
         event.preventDefault();
 
@@ -462,13 +522,25 @@
         const errorBox = document.getElementById('pilotError');
         const loading = document.getElementById('pilotLoading');
         const authLink = document.getElementById('pilotAuthLink');
+        const submitBtn = document.getElementById('submitBtn');
 
-        const companyName = document.getElementById('pilotCompany').value;
-        const hubspotPortalId = document.getElementById('pilotPortal').value;
-        const corporateEmail = document.getElementById('pilotEmail').value;
+        const isCompanyValid = validateField('company');
+        const isPortalValid = validateField('portal');
+        const isEmailValid = validateField('email');
+
+        if (!isCompanyValid || !isPortalValid || !isEmailValid) {
+          console.warn('API submission aborted: validation failed.');
+          return;
+        }
+
+        const companyName = document.getElementById('pilotCompany').value.trim();
+        const hubspotPortalId = document.getElementById('pilotPortal').value.trim();
+        const corporateEmail = document.getElementById('pilotEmail').value.trim();
 
         errorBox.classList.add('hidden');
         errorBox.textContent = '';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Initializing Framework Link...';
         form.classList.add('hidden');
         loading.classList.remove('hidden');
 
@@ -517,6 +589,8 @@
         } catch (error) {
           loading.classList.add('hidden');
           form.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Provision Free Pipeline Audit';
           errorBox.textContent = error instanceof Error ? error.message : 'Failed to connect to PaceLock provisioning.';
           errorBox.classList.remove('hidden');
         }
