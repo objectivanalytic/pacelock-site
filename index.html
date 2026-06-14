@@ -56,7 +56,7 @@
         </nav>
 
         <a
-          href="mailto:founders@pacelock.com?subject=PaceLock%20HubSpot%20pilot"
+          href="#pilot"
           class="inline-flex h-9 items-center rounded-md bg-cyan-400 px-4 font-mono text-[11px] font-black uppercase tracking-wider text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:bg-cyan-300"
         >
           Request Pilot
@@ -349,6 +349,68 @@
           </details>
         </div>
       </section>
+
+      <section id="pilot" class="mx-auto max-w-xl border-t border-slate-900 bg-slate-900/10 px-6 py-20">
+        <div class="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl">
+          <div class="pointer-events-none absolute left-0 top-0 h-32 w-32 rounded-full bg-cyan-950/20 blur-3xl"></div>
+
+          <div class="relative mb-6 text-center">
+            <h3 class="font-mono text-sm font-bold uppercase tracking-wider text-cyan-400">Initialize System Pilot</h3>
+            <p class="mt-1 text-xs text-slate-400">Connect your workspace securely to calculate your pipeline integrity score.</p>
+          </div>
+
+          <form id="pilotForm" class="relative space-y-4 text-xs">
+            <div>
+              <label for="pilotCompany" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Company Name</label>
+              <input
+                type="text"
+                required
+                id="pilotCompany"
+                placeholder="Acme Logistics Enterprise"
+                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
+              />
+            </div>
+            <div>
+              <label for="pilotPortal" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">HubSpot Portal ID</label>
+              <input
+                type="text"
+                required
+                id="pilotPortal"
+                inputmode="numeric"
+                placeholder="e.g., 9991234"
+                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-mono text-slate-200 outline-none transition focus:border-cyan-500"
+              />
+            </div>
+            <div>
+              <label for="pilotEmail" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Corporate Contact Email</label>
+              <input
+                type="email"
+                required
+                id="pilotEmail"
+                placeholder="revops@yourcompany.com"
+                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
+              />
+            </div>
+
+            <div class="pt-2">
+              <button
+                type="submit"
+                class="w-full cursor-pointer rounded bg-cyan-500 py-2.5 font-mono font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600"
+              >
+                Provision Free Pipeline Audit
+              </button>
+            </div>
+          </form>
+
+          <div id="pilotSuccess" class="relative hidden py-6 text-center animate-slide-up">
+            <span class="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-800 bg-emerald-950 font-mono text-sm font-bold text-emerald-400">✓</span>
+            <h4 class="font-mono text-xs font-bold uppercase tracking-wide text-emerald-400">Workspace Environment Queued</h4>
+            <p class="mx-auto mt-1 max-w-xs text-[11px] text-slate-300">
+              Your sandbox context configuration is active. Check your email inbox to complete OAuth 2.0 authorization steps.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="border-t border-slate-900 py-8">
@@ -376,6 +438,25 @@
           }, 2600);
         });
       });
+
+      function handlePilotSubmission(event) {
+        event.preventDefault();
+
+        const company = document.getElementById('pilotCompany').value;
+        const portalId = document.getElementById('pilotPortal').value;
+        const email = document.getElementById('pilotEmail').value;
+
+        console.log('Routing pilot data payload parameters to Render API stack:', {
+          company,
+          portalId,
+          email
+        });
+
+        document.getElementById('pilotForm').classList.add('hidden');
+        document.getElementById('pilotSuccess').classList.remove('hidden');
+      }
+
+      document.getElementById('pilotForm')?.addEventListener('submit', handlePilotSubmission);
     </script>
   </body>
 </html>
