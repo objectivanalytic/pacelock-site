@@ -254,30 +254,130 @@
               </p>
             </div>
 
-            <div class="grid gap-4 md:grid-cols-2">
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Forecast defensibility</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Compare rep claims, PaceLock probability, HubSpot submitted forecast, quota target, and validated forecast contribution.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Rep calibration</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Discount current optimism against owner-level closed-deal history, with evidence-only mode when the sample is thin.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Deal risk queue</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Prioritize deals by forecast gap, contact coverage, stale activity, close-date movement, stage pressure, and next manager action.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Marketing corroboration</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Flag when marketing warmed up more contacts than sales is working, or when high-intent leads waited too long.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Deal split attribution</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Avoid double-counting shared deals by attributing forecast impact to each owner when HubSpot deal splits are enabled.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <h3 class="text-base font-black text-slate-950">Currency normalization</h3>
-                <p class="mt-2 text-sm leading-6 text-slate-600">Normalize regional pipeline into the portal's home currency before comparing forecast to quota.</p>
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-xl shadow-slate-200/70">
+              <div class="grid gap-2 md:grid-cols-2" role="tablist" aria-label="PaceLock evidence features">
+                <button
+                  type="button"
+                  data-feature-button="defensibility"
+                  class="feature-button rounded-xl border border-[#ff5c35] bg-white p-4 text-left shadow-sm ring-2 ring-orange-100 transition hover:border-[#ff5c35]"
+                  aria-selected="true"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Forecast</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Forecast defensibility</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">Rep claim vs evidence-backed number.</span>
+                </button>
+                <button
+                  type="button"
+                  data-feature-button="calibration"
+                  class="feature-button rounded-xl border border-slate-200 bg-white/70 p-4 text-left transition hover:border-slate-300 hover:bg-white"
+                  aria-selected="false"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-slate-500">History</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Rep calibration</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">Owner-level close behavior.</span>
+                </button>
+                <button
+                  type="button"
+                  data-feature-button="risk"
+                  class="feature-button rounded-xl border border-slate-200 bg-white/70 p-4 text-left transition hover:border-slate-300 hover:bg-white"
+                  aria-selected="false"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-slate-500">Triage</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Deal risk queue</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">Which deals need manager action.</span>
+                </button>
+                <button
+                  type="button"
+                  data-feature-button="marketing"
+                  class="feature-button rounded-xl border border-slate-200 bg-white/70 p-4 text-left transition hover:border-slate-300 hover:bg-white"
+                  aria-selected="false"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-slate-500">Intent</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Marketing corroboration</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">Warm contacts sales may be missing.</span>
+                </button>
+                <button
+                  type="button"
+                  data-feature-button="splits"
+                  class="feature-button rounded-xl border border-slate-200 bg-white/70 p-4 text-left transition hover:border-slate-300 hover:bg-white"
+                  aria-selected="false"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-slate-500">Attribution</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Deal split attribution</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">No double-counted shared revenue.</span>
+                </button>
+                <button
+                  type="button"
+                  data-feature-button="currency"
+                  class="feature-button rounded-xl border border-slate-200 bg-white/70 p-4 text-left transition hover:border-slate-300 hover:bg-white"
+                  aria-selected="false"
+                >
+                  <span class="block text-[10px] font-black uppercase tracking-wide text-slate-500">Finance</span>
+                  <span class="mt-1 block text-sm font-black text-slate-950">Currency normalization</span>
+                  <span class="mt-1 block text-xs leading-5 text-slate-500">Regional pipeline in home currency.</span>
+                </button>
+              </div>
+
+              <article class="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="grid gap-0 lg:grid-cols-[1fr_0.78fr]">
+                  <div class="p-6 md:p-7">
+                    <p id="featureKicker" class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Forecast</p>
+                    <h3 id="featureTitle" class="mt-2 text-2xl font-black tracking-tight text-slate-950">Forecast defensibility</h3>
+                    <p id="featureDescription" class="mt-3 text-sm leading-7 text-slate-600">
+                      Compare rep claims, PaceLock probability, HubSpot submitted forecast, quota target, and validated forecast contribution.
+                    </p>
+
+                    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Example</p>
+                      <p id="featureExample" class="mt-2 text-sm font-bold leading-6 text-slate-900">
+                        HubSpot submitted forecast is $1.20M. PaceLock's defensible forecast is $870k, with a $330k evidence gap.
+                      </p>
+                    </div>
+
+                    <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                      <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
+                        <p class="text-[10px] font-black uppercase tracking-wide text-blue-700">Manager question</p>
+                        <p id="featureQuestion" class="mt-2 text-sm font-bold leading-6 text-blue-950">Which number can I defend in the forecast call?</p>
+                      </div>
+                      <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                        <p class="text-[10px] font-black uppercase tracking-wide text-emerald-700">Next action</p>
+                        <p id="featureAction" class="mt-2 text-sm font-bold leading-6 text-emerald-950">Move weak evidence deals out of Commit before submitting.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-slate-200 bg-slate-950 p-6 text-white lg:border-l lg:border-t-0 md:p-7">
+                    <p class="text-[10px] font-black uppercase tracking-wide text-orange-300">HubSpot evidence used</p>
+                    <div id="featureSignals" class="mt-4 flex flex-wrap gap-2">
+                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Forecast submissions</span>
+                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Deal amount</span>
+                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Quota target</span>
+                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Commit bucket</span>
+                    </div>
+
+                    <div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-4">
+                      <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Why it matters</p>
+                      <p id="featureWhy" class="mt-2 text-sm leading-7 text-slate-300">
+                        Managers stop arguing from instinct and start reviewing a forecast gap with a traceable evidence trail.
+                      </p>
+                    </div>
+
+                    <div class="mt-5 grid grid-cols-3 gap-2 text-center">
+                      <div class="rounded-lg border border-slate-800 bg-slate-900 p-3">
+                        <p id="featureMetricOne" class="font-mono text-lg font-black text-white">$1.20M</p>
+                        <p id="featureMetricOneLabel" class="mt-1 text-[10px] font-bold uppercase text-slate-500">HubSpot</p>
+                      </div>
+                      <div class="rounded-lg border border-blue-800 bg-blue-950/60 p-3">
+                        <p id="featureMetricTwo" class="font-mono text-lg font-black text-blue-200">$870k</p>
+                        <p id="featureMetricTwoLabel" class="mt-1 text-[10px] font-bold uppercase text-blue-300">Defensible</p>
+                      </div>
+                      <div class="rounded-lg border border-red-800 bg-red-950/50 p-3">
+                        <p id="featureMetricThree" class="font-mono text-lg font-black text-red-200">-$330k</p>
+                        <p id="featureMetricThreeLabel" class="mt-1 text-[10px] font-bold uppercase text-red-300">Gap</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </article>
             </div>
           </div>
@@ -488,11 +588,138 @@
       const PACELOCK_GRAPHQL_ENDPOINT = 'https://pacelock-api.onrender.com/graphql';
       const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const PUBLIC_DOMAINS = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
+      const featureContent = {
+        defensibility: {
+          kicker: 'Forecast',
+          title: 'Forecast defensibility',
+          description: 'Compare rep claims, PaceLock probability, HubSpot submitted forecast, quota target, and validated forecast contribution.',
+          example: "HubSpot submitted forecast is $1.20M. PaceLock's defensible forecast is $870k, with a $330k evidence gap.",
+          question: 'Which number can I defend in the forecast call?',
+          action: 'Move weak evidence deals out of Commit before submitting.',
+          why: 'Managers stop arguing from instinct and start reviewing a forecast gap with a traceable evidence trail.',
+          signals: ['Forecast submissions', 'Deal amount', 'Quota target', 'Commit bucket'],
+          metrics: [
+            ['$1.20M', 'HubSpot'],
+            ['$870k', 'Defensible'],
+            ['-$330k', 'Gap']
+          ]
+        },
+        calibration: {
+          kicker: 'History',
+          title: 'Rep calibration',
+          description: 'Discount current optimism against owner-level closed-deal history, with evidence-only mode when the sample is thin.',
+          example: 'Priya marks a deal Commit at 90%, but her owner-level closed-deal history supports 54% until stronger evidence appears.',
+          question: 'Is this rep usually accurate at this confidence level?',
+          action: 'Challenge over-optimistic calls before they become the manager forecast.',
+          why: 'PaceLock separates rep belief from historical behavior, while refusing to overstate calibration when the sample is too thin.',
+          signals: ['Closed-won outcomes', 'Closed-lost outcomes', 'Owner history', 'Snapshot ledger'],
+          metrics: [
+            ['90%', 'Rep says'],
+            ['54%', 'Owner rate'],
+            ['Evidence', 'Guardrail']
+          ]
+        },
+        risk: {
+          kicker: 'Triage',
+          title: 'Deal risk queue',
+          description: 'Prioritize deals by forecast gap, contact coverage, stale activity, close-date movement, stage pressure, and next manager action.',
+          example: 'Acme is marked 80% by the rep, but PaceLock sees one associated contact, no buyer reply, and repeated close-date movement.',
+          question: 'Which deals need manager intervention first?',
+          action: 'Create a coaching task or move the deal to a safer forecast bucket.',
+          why: 'The queue keeps managers focused on decision-grade risk instead of scanning every HubSpot deal manually.',
+          signals: ['Activity age', 'Contact coverage', 'Close-date pushes', 'Stage pressure'],
+          metrics: [
+            ['62 pts', 'Gap'],
+            ['1', 'Contact'],
+            ['Critical', 'Risk']
+          ]
+        },
+        marketing: {
+          kicker: 'Intent',
+          title: 'Marketing corroboration',
+          description: 'Flag when marketing warmed up more contacts than sales is working, or when high-intent leads waited too long.',
+          example: 'Marketing engaged 5 contacts at Globex, but sales has only 1 active contact associated with the open deal.',
+          question: 'Is sales using the buying interest HubSpot already captured?',
+          action: 'Ask the rep to multi-thread warm contacts or explain why intent was not worked.',
+          why: 'HubSpot often has valuable marketing evidence that never reaches the forecast review. PaceLock brings it into the manager workflow.',
+          signals: ['Contact associations', 'Campaign engagement', 'Lead stage timing', 'Intent score'],
+          metrics: [
+            ['5', 'Warmed'],
+            ['1', 'Worked'],
+            ['4', 'Gap']
+          ]
+        },
+        splits: {
+          kicker: 'Attribution',
+          title: 'Deal split attribution',
+          description: 'Avoid double-counting shared deals by attributing forecast impact to each owner when HubSpot deal splits are enabled.',
+          example: 'A $100k shared deal split 60/40 becomes $60k for Sarah and $40k for Mark in the manager forecast.',
+          question: 'Are we counting shared revenue once, or twice?',
+          action: 'Normalize each owner forecast to their actual split contribution.',
+          why: 'Shared deals can inflate team forecasts when every owner gets full credit. PaceLock keeps rollups defensible.',
+          signals: ['Deal splits', 'Owner attribution', 'Amount property', 'Forecast type'],
+          metrics: [
+            ['$100k', 'Deal'],
+            ['60/40', 'Split'],
+            ['$60k', 'Sarah']
+          ]
+        },
+        currency: {
+          kicker: 'Finance',
+          title: 'Currency normalization',
+          description: "Normalize regional pipeline into the portal's home currency before comparing forecast to quota.",
+          example: 'EMEA pipeline is converted to USD before PaceLock compares the manager forecast against a USD quota target.',
+          question: 'Are regional deals being compared to quota in the same currency?',
+          action: 'Convert all forecast totals before calculating target gap and validated contribution.',
+          why: 'Multi-region forecasts need a common currency baseline before the manager can defend the rollup.',
+          signals: ['Currency settings', 'Exchange rates', 'Deal amount', 'Home currency'],
+          metrics: [
+            ['EUR', 'Source'],
+            ['USD', 'Home'],
+            ['Clean', 'Rollup']
+          ]
+        }
+      };
       const fieldIdMap = {
         company: 'pilotCompany',
         portal: 'pilotPortal',
         email: 'pilotEmail'
       };
+
+      function renderFeature(featureKey) {
+        const feature = featureContent[featureKey] || featureContent.defensibility;
+        document.getElementById('featureKicker').textContent = feature.kicker;
+        document.getElementById('featureTitle').textContent = feature.title;
+        document.getElementById('featureDescription').textContent = feature.description;
+        document.getElementById('featureExample').textContent = feature.example;
+        document.getElementById('featureQuestion').textContent = feature.question;
+        document.getElementById('featureAction').textContent = feature.action;
+        document.getElementById('featureWhy').textContent = feature.why;
+        document.getElementById('featureSignals').innerHTML = feature.signals
+          .map((signal) => `<span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">${signal}</span>`)
+          .join('');
+        feature.metrics.forEach(([value, label], index) => {
+          const number = index + 1;
+          document.getElementById(`featureMetric${['One', 'Two', 'Three'][index]}`).textContent = value;
+          document.getElementById(`featureMetric${['One', 'Two', 'Three'][index]}Label`).textContent = label;
+        });
+
+        document.querySelectorAll('[data-feature-button]').forEach((button) => {
+          const isActive = button.dataset.featureButton === featureKey;
+          button.setAttribute('aria-selected', String(isActive));
+          button.classList.toggle('border-[#ff5c35]', isActive);
+          button.classList.toggle('ring-2', isActive);
+          button.classList.toggle('ring-orange-100', isActive);
+          button.classList.toggle('shadow-sm', isActive);
+          button.classList.toggle('bg-white', isActive);
+          button.classList.toggle('border-slate-200', !isActive);
+          button.classList.toggle('bg-white/70', !isActive);
+        });
+      }
+
+      document.querySelectorAll('[data-feature-button]').forEach((button) => {
+        button.addEventListener('click', () => renderFeature(button.dataset.featureButton));
+      });
 
       function setFieldState(input, errorEl, errorMessage) {
         input.classList.remove('border-slate-300', 'border-red-500', 'border-emerald-500', 'focus:border-red-500', 'focus:border-[#ff5c35]');
