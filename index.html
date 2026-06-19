@@ -242,7 +242,7 @@
 
       <section id="features" class="border-y border-slate-200 bg-white py-20">
         <div class="mx-auto max-w-7xl px-5">
-          <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <p class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Evidence engine</p>
               <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
@@ -255,7 +255,8 @@
             </div>
 
             <div class="rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-xl shadow-slate-200/70">
-              <div class="grid gap-2 md:grid-cols-2" role="tablist" aria-label="PaceLock evidence features">
+              <p class="px-3 pb-2 pt-1 text-[10px] font-black uppercase tracking-wide text-slate-500">Choose a feature</p>
+              <div class="grid gap-2 sm:grid-cols-2 xl:grid-cols-3" role="tablist" aria-label="PaceLock evidence features">
                 <button
                   type="button"
                   data-feature-button="defensibility"
@@ -317,70 +318,79 @@
                   <span class="mt-1 block text-xs leading-5 text-slate-500">Regional pipeline in home currency.</span>
                 </button>
               </div>
+            </div>
+          </div>
 
-              <article class="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                <div class="grid gap-0 lg:grid-cols-[1fr_0.78fr]">
-                  <div class="p-6 md:p-7">
+          <article class="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/70">
+            <div class="grid gap-0 xl:grid-cols-[1.25fr_0.75fr]">
+              <div class="p-6 md:p-8 lg:p-10">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                  <div class="max-w-3xl">
                     <p id="featureKicker" class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Forecast</p>
-                    <h3 id="featureTitle" class="mt-2 text-2xl font-black tracking-tight text-slate-950">Forecast defensibility</h3>
-                    <p id="featureDescription" class="mt-3 text-sm leading-7 text-slate-600">
+                    <h3 id="featureTitle" class="mt-2 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">Forecast defensibility</h3>
+                    <p id="featureDescription" class="mt-4 text-base leading-8 text-slate-600">
                       Compare rep claims, PaceLock probability, HubSpot submitted forecast, quota target, and validated forecast contribution.
                     </p>
-
-                    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Example</p>
-                      <p id="featureExample" class="mt-2 text-sm font-bold leading-6 text-slate-900">
-                        HubSpot submitted forecast is $1.20M. PaceLock's defensible forecast is $870k, with a $330k evidence gap.
-                      </p>
-                    </div>
-
-                    <div class="mt-5 grid gap-3 sm:grid-cols-2">
-                      <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
-                        <p class="text-[10px] font-black uppercase tracking-wide text-blue-700">Manager question</p>
-                        <p id="featureQuestion" class="mt-2 text-sm font-bold leading-6 text-blue-950">Which number can I defend in the forecast call?</p>
-                      </div>
-                      <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                        <p class="text-[10px] font-black uppercase tracking-wide text-emerald-700">Next action</p>
-                        <p id="featureAction" class="mt-2 text-sm font-bold leading-6 text-emerald-950">Move weak evidence deals out of Commit before submitting.</p>
-                      </div>
-                    </div>
                   </div>
 
-                  <div class="border-t border-slate-200 bg-slate-950 p-6 text-white lg:border-l lg:border-t-0 md:p-7">
-                    <p class="text-[10px] font-black uppercase tracking-wide text-orange-300">HubSpot evidence used</p>
-                    <div id="featureSignals" class="mt-4 flex flex-wrap gap-2">
-                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Forecast submissions</span>
-                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Deal amount</span>
-                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Quota target</span>
-                      <span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">Commit bucket</span>
+                  <div class="grid min-w-[260px] grid-cols-3 gap-2 text-center">
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                      <p id="featureMetricOne" class="font-mono text-xl font-black text-slate-950">$1.20M</p>
+                      <p id="featureMetricOneLabel" class="mt-1 text-[10px] font-bold uppercase text-slate-500">HubSpot</p>
                     </div>
-
-                    <div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-4">
-                      <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Why it matters</p>
-                      <p id="featureWhy" class="mt-2 text-sm leading-7 text-slate-300">
-                        Managers stop arguing from instinct and start reviewing a forecast gap with a traceable evidence trail.
-                      </p>
+                    <div class="rounded-xl border border-blue-200 bg-blue-50 p-3">
+                      <p id="featureMetricTwo" class="font-mono text-xl font-black text-blue-800">$870k</p>
+                      <p id="featureMetricTwoLabel" class="mt-1 text-[10px] font-bold uppercase text-blue-700">Defensible</p>
                     </div>
-
-                    <div class="mt-5 grid grid-cols-3 gap-2 text-center">
-                      <div class="rounded-lg border border-slate-800 bg-slate-900 p-3">
-                        <p id="featureMetricOne" class="font-mono text-lg font-black text-white">$1.20M</p>
-                        <p id="featureMetricOneLabel" class="mt-1 text-[10px] font-bold uppercase text-slate-500">HubSpot</p>
-                      </div>
-                      <div class="rounded-lg border border-blue-800 bg-blue-950/60 p-3">
-                        <p id="featureMetricTwo" class="font-mono text-lg font-black text-blue-200">$870k</p>
-                        <p id="featureMetricTwoLabel" class="mt-1 text-[10px] font-bold uppercase text-blue-300">Defensible</p>
-                      </div>
-                      <div class="rounded-lg border border-red-800 bg-red-950/50 p-3">
-                        <p id="featureMetricThree" class="font-mono text-lg font-black text-red-200">-$330k</p>
-                        <p id="featureMetricThreeLabel" class="mt-1 text-[10px] font-bold uppercase text-red-300">Gap</p>
-                      </div>
+                    <div class="rounded-xl border border-red-200 bg-red-50 p-3">
+                      <p id="featureMetricThree" class="font-mono text-xl font-black text-red-700">-$330k</p>
+                      <p id="featureMetricThreeLabel" class="mt-1 text-[10px] font-bold uppercase text-red-700">Gap</p>
                     </div>
                   </div>
                 </div>
-              </article>
+
+                <div class="mt-8 grid gap-4 lg:grid-cols-3">
+                  <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 lg:col-span-3">
+                    <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Example</p>
+                    <p id="featureExample" class="mt-2 text-base font-bold leading-7 text-slate-900">
+                      HubSpot submitted forecast is $1.20M. PaceLock's defensible forecast is $870k, with a $330k evidence gap.
+                    </p>
+                  </div>
+                  <div class="rounded-xl border border-blue-200 bg-blue-50 p-5">
+                    <p class="text-[10px] font-black uppercase tracking-wide text-blue-700">Manager question</p>
+                    <p id="featureQuestion" class="mt-2 text-base font-bold leading-7 text-blue-950">Which number can I defend in the forecast call?</p>
+                  </div>
+                  <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <p class="text-[10px] font-black uppercase tracking-wide text-emerald-700">Next action</p>
+                    <p id="featureAction" class="mt-2 text-base font-bold leading-7 text-emerald-950">Move weak evidence deals out of Commit before submitting.</p>
+                  </div>
+                  <div class="rounded-xl border border-orange-200 bg-orange-50 p-5">
+                    <p class="text-[10px] font-black uppercase tracking-wide text-orange-700">Why it matters</p>
+                    <p id="featureWhy" class="mt-2 text-base font-bold leading-7 text-orange-950">
+                      Managers stop arguing from instinct and start reviewing a forecast gap with a traceable evidence trail.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-200 bg-slate-950 p-6 text-white xl:border-l xl:border-t-0 md:p-8 lg:p-10">
+                <p class="text-[10px] font-black uppercase tracking-wide text-orange-300">HubSpot evidence used</p>
+                <div id="featureSignals" class="mt-5 grid gap-3">
+                  <span class="rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm font-bold text-slate-200">Forecast submissions</span>
+                  <span class="rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm font-bold text-slate-200">Deal amount</span>
+                  <span class="rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm font-bold text-slate-200">Quota target</span>
+                  <span class="rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm font-bold text-slate-200">Commit bucket</span>
+                </div>
+
+                <div class="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Readout</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-300">
+                    The selected signal becomes part of the manager's forecast review instead of staying buried in HubSpot setup, finance, or RevOps context.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </article>
 
           <div class="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
             <table class="w-full min-w-[880px] border-collapse text-left text-sm">
@@ -696,7 +706,7 @@
         document.getElementById('featureAction').textContent = feature.action;
         document.getElementById('featureWhy').textContent = feature.why;
         document.getElementById('featureSignals').innerHTML = feature.signals
-          .map((signal) => `<span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-bold text-slate-200">${signal}</span>`)
+          .map((signal) => `<span class="rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm font-bold text-slate-200">${signal}</span>`)
           .join('');
         feature.metrics.forEach(([value, label], index) => {
           const number = index + 1;
