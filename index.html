@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PaceLock is guided revenue intelligence for HubSpot teams: pipeline governance, forecast confidence, closed-lost recovery, and permission-to-land outreach controls."
+      content="PaceLock helps HubSpot sales managers defend the forecast with evidence from rep calibration, deal activity, contact coverage, marketing intent, and native HubSpot forecast submissions."
     />
-    <title>PaceLock | Guided Revenue Intelligence for HubSpot</title>
+    <title>PaceLock | Defensible Forecasts for HubSpot Sales Managers</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
       @keyframes slide-up {
@@ -21,13 +21,13 @@
         }
       }
 
-      @keyframes glow {
+      @keyframes soft-pulse {
         0%,
         100% {
-          box-shadow: 0 0 0 rgba(6, 182, 212, 0);
+          box-shadow: 0 20px 80px rgba(15, 23, 42, 0.08);
         }
         50% {
-          box-shadow: 0 0 28px rgba(6, 182, 212, 0.28);
+          box-shadow: 0 24px 90px rgba(255, 92, 53, 0.14);
         }
       }
 
@@ -35,120 +35,162 @@
         animation: slide-up 0.45s ease-out both;
       }
 
-      .animate-soft-glow {
-        animation: glow 3.5s ease-in-out infinite;
+      .animate-soft-pulse {
+        animation: soft-pulse 4s ease-in-out infinite;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(18px);
+      }
+
+      .hubspot-gradient {
+        background:
+          radial-gradient(circle at top left, rgba(255, 92, 53, 0.18), transparent 34%),
+          radial-gradient(circle at bottom right, rgba(20, 108, 148, 0.14), transparent 34%),
+          linear-gradient(135deg, #ffffff 0%, #f8fafc 48%, #fff7ed 100%);
       }
     </style>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950">
-    <header class="sticky top-0 z-40 border-b border-slate-900 bg-slate-950/90 backdrop-blur-xl">
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased selection:bg-orange-200 selection:text-slate-950">
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
       <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <a href="#top" class="flex items-center gap-3" aria-label="PaceLock home">
-          <span class="h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.55)]"></span>
-          <span class="font-mono text-sm font-black tracking-[0.24em] text-slate-100">PACELOCK</span>
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#ff5c35] text-sm font-black text-white shadow-lg shadow-orange-200">P</span>
+          <span>
+            <span class="block text-lg font-black tracking-tight text-slate-950">PaceLock</span>
+            <span class="hidden text-xs font-semibold text-slate-500 sm:block">Forecast defensibility for HubSpot</span>
+          </span>
         </a>
 
-        <nav class="hidden items-center gap-6 font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 md:flex">
-          <a class="transition hover:text-slate-200" href="#cockpit">Control Cockpit</a>
-          <a class="transition hover:text-slate-200" href="#recovery">Recovery</a>
-          <a class="transition hover:text-slate-200" href="#moats">Infrastructure</a>
-          <a class="transition hover:text-slate-200" href="#faq">Security</a>
+        <nav class="hidden items-center gap-6 text-xs font-bold text-slate-500 md:flex">
+          <a class="transition hover:text-slate-950" href="#workflow">Workflow</a>
+          <a class="transition hover:text-slate-950" href="#features">Features</a>
+          <a class="transition hover:text-slate-950" href="#agency">Agency setup</a>
+          <a class="transition hover:text-slate-950" href="#trust">Trust</a>
         </nav>
 
         <a
           href="#pilot"
-          class="inline-flex h-9 items-center rounded-md bg-cyan-400 px-4 font-mono text-[11px] font-black uppercase tracking-wider text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:bg-cyan-300"
+          class="inline-flex h-10 items-center rounded-md bg-[#ff5c35] px-4 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-orange-200 transition hover:bg-[#e54824]"
         >
-          Request Pilot
+          Request pilot
         </a>
       </div>
     </header>
 
     <main id="top">
-      <section class="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-14 pt-16 lg:grid-cols-[0.9fr_1.1fr] lg:pb-20 lg:pt-20">
-        <div class="animate-slide-up">
-          <span class="inline-flex items-center rounded-full border border-cyan-800/50 bg-cyan-950/40 px-3 py-1 font-mono text-[10px] font-black uppercase tracking-[0.22em] text-cyan-300">
-            HubSpot Revenue Governance
-          </span>
-          <h1 class="mt-6 max-w-3xl text-4xl font-black tracking-normal text-slate-50 md:text-6xl">
-            Keep HubSpot fast. Make every forecast defensible.
-          </h1>
-          <p class="mt-5 max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
-            PaceLock is the revenue-guided co-pilot for HubSpot Enterprise teams. It protects forecast integrity, guides rep updates, and finds closed-lost accounts that are ready to re-enter the pipeline.
-          </p>
+      <section class="hubspot-gradient border-b border-slate-200">
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:pb-20 lg:pt-20">
+          <div class="animate-slide-up">
+            <span class="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-[#b54020]">
+              HubSpot-native forecast evidence layer
+            </span>
+            <h1 class="mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-950 md:text-6xl">
+              Defend your HubSpot forecast with evidence, not rep optimism.
+            </h1>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+              PaceLock compares rep confidence against historical outcomes, deal evidence, contact coverage,
+              marketing intent, and native HubSpot forecast submissions so sales managers can commit a number
+              they are willing to stand behind.
+            </p>
 
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#cockpit"
-              class="inline-flex h-11 items-center justify-center rounded-md bg-cyan-400 px-5 font-mono text-xs font-black uppercase tracking-wider text-slate-950 transition hover:bg-cyan-300"
-            >
-              View Control Cockpit
-            </a>
-            <a
-              href="#moats"
-              class="inline-flex h-11 items-center justify-center rounded-md border border-slate-800 bg-slate-900 px-5 font-mono text-xs font-black uppercase tracking-wider text-slate-200 transition hover:border-slate-700 hover:bg-slate-800"
-            >
-              See the Moats
-            </a>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#features"
+                class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff5c35] px-5 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-orange-200 transition hover:bg-[#e54824]"
+              >
+                See the evidence engine
+              </a>
+              <a
+                href="#agency"
+                class="inline-flex h-11 items-center justify-center rounded-md border border-slate-300 bg-white px-5 text-xs font-black uppercase tracking-wide text-slate-800 transition hover:border-slate-400 hover:bg-slate-50"
+              >
+                Agency pilot flow
+              </a>
+            </div>
+
+            <dl class="mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
+              <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                <dt class="text-[10px] font-black uppercase tracking-wide text-slate-500">Rep forecast</dt>
+                <dd class="mt-2 font-mono text-2xl font-black text-slate-950">$1.20M</dd>
+              </div>
+              <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-sm">
+                <dt class="text-[10px] font-black uppercase tracking-wide text-blue-700">PaceLock defensible</dt>
+                <dd class="mt-2 font-mono text-2xl font-black text-blue-800">$870k</dd>
+              </div>
+              <div class="rounded-lg border border-red-200 bg-red-50 p-4 shadow-sm">
+                <dt class="text-[10px] font-black uppercase tracking-wide text-red-700">Forecast gap</dt>
+                <dd class="mt-2 font-mono text-2xl font-black text-red-700">-$330k</dd>
+              </div>
+            </dl>
           </div>
 
-          <dl class="mt-9 grid max-w-2xl grid-cols-3 gap-3">
-            <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
-              <dt class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">Forecast Gap</dt>
-              <dd class="mt-2 font-mono text-xl font-black text-red-400">-$150k</dd>
-            </div>
-            <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
-              <dt class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">AI Commit</dt>
-              <dd class="mt-2 font-mono text-xl font-black text-cyan-300">$850k</dd>
-            </div>
-            <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
-              <dt class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">Health</dt>
-              <dd class="mt-2 font-mono text-xl font-black text-emerald-400">72%</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4 shadow-2xl shadow-slate-950/70 animate-soft-glow">
-          <div class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div>
-                <p class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Live Revenue Panel</p>
-                <h2 class="mt-1 text-sm font-bold text-slate-100">Permission to Land Gatekeeper</h2>
-              </div>
-              <span class="rounded-full border border-emerald-800/70 bg-emerald-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-emerald-300">Active</span>
-            </div>
-
-            <div class="mt-4 space-y-3">
-              <div class="grid grid-cols-[1fr_auto] gap-4 rounded-lg border border-red-900/60 bg-red-950/20 p-3">
+          <div class="animate-soft-pulse rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200">
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <div class="flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p class="text-sm font-bold text-slate-100">Nexus Logistics Corp</p>
-                  <p class="mt-1 text-xs text-slate-500">Organizational churn and budget freeze detected</p>
+                  <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Forecast defensibility review</p>
+                  <h2 class="mt-1 text-lg font-black text-slate-950">Northwind Expansion</h2>
+                  <p class="mt-1 text-xs font-semibold text-slate-500">Priya S. - $180,000 - Commit</p>
                 </div>
-                <div class="text-right">
-                  <p class="font-mono text-xl font-black text-red-400">10%</p>
-                  <p class="font-mono text-[10px] font-bold uppercase text-red-300">Denied</p>
+                <span class="w-fit rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-[10px] font-black uppercase text-orange-700">
+                  Needs manager review
+                </span>
+              </div>
+
+              <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-lg border border-slate-200 bg-white p-3">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Rep stated</p>
+                  <p class="mt-1 font-mono text-xl font-black text-slate-950">90%</p>
+                </div>
+                <div class="rounded-lg border border-blue-300 bg-blue-50 p-3">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-blue-700">Defensible</p>
+                  <p class="mt-1 font-mono text-xl font-black text-blue-800">54%</p>
+                </div>
+                <div class="rounded-lg border border-red-200 bg-red-50 p-3">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-red-700">Forecast haircut</p>
+                  <p class="mt-1 font-mono text-xl font-black text-red-700">-$64.8k</p>
                 </div>
               </div>
 
-              <div class="grid grid-cols-[1fr_auto] gap-4 rounded-lg border border-amber-900/60 bg-amber-950/20 p-3">
-                <div>
-                  <p class="text-sm font-bold text-slate-100">Vanguard Fintech Inc</p>
-                  <p class="mt-1 text-xs text-slate-500">Competitor contract lock-in has 16 months remaining</p>
-                </div>
-                <div class="text-right">
-                  <p class="font-mono text-xl font-black text-amber-300">60%</p>
-                  <p class="font-mono text-[10px] font-bold uppercase text-amber-200">Hold</p>
+              <div class="mt-4 rounded-lg border border-slate-200 bg-white p-4">
+                <p class="text-xs font-black uppercase tracking-wide text-slate-500">Why PaceLock discounted the deal</p>
+                <div class="mt-3 space-y-3">
+                  <div>
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>Priya owner-level close rate</span>
+                      <span>54%</span>
+                    </div>
+                    <div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[54%] rounded-full bg-blue-600"></div></div>
+                  </div>
+                  <div>
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>Evidence completeness</span>
+                      <span>68%</span>
+                    </div>
+                    <div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[68%] rounded-full bg-emerald-500"></div></div>
+                  </div>
+                  <div>
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>Marketing-to-sales coverage</span>
+                      <span>Gap found</span>
+                    </div>
+                    <div class="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800">
+                      Marketing engaged 5 contacts. Sales is actively working 1.
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div class="grid grid-cols-[1fr_auto] gap-4 rounded-lg border border-emerald-900/60 bg-emerald-950/20 p-3">
-                <div>
-                  <p class="text-sm font-bold text-slate-100">Stellar Cloud Platforms</p>
-                  <p class="mt-1 text-xs text-slate-500">No environmental constraints found</p>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-lg border border-slate-200 bg-white p-3">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Native HubSpot forecast</p>
+                  <p class="mt-1 font-mono text-lg font-black text-slate-950">$1.20M</p>
                 </div>
-                <div class="text-right">
-                  <p class="font-mono text-xl font-black text-emerald-300">100%</p>
-                  <p class="font-mono text-[10px] font-bold uppercase text-emerald-200">Granted</p>
+                <div class="rounded-lg border border-slate-200 bg-white p-3">
+                  <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Manager action</p>
+                  <p class="mt-1 text-sm font-black text-slate-950">Move from Commit to Best Case</p>
                 </div>
               </div>
             </div>
@@ -156,97 +198,119 @@
         </div>
       </section>
 
-      <section id="cockpit" class="mx-auto max-w-7xl px-5 pb-20">
-        <div class="rounded-xl border border-slate-800 bg-slate-900 p-4 shadow-2xl shadow-slate-950/70 md:p-6">
-          <div class="flex flex-col justify-between gap-4 border-b border-slate-800 pb-5 md:flex-row md:items-center">
+      <section id="workflow" class="mx-auto max-w-7xl px-5 py-20">
+        <div class="max-w-3xl">
+          <p class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Manager workflow</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            From noisy HubSpot pipeline to a number managers can defend.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">01</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Connect HubSpot</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">OAuth brings in deals, owners, contacts, activity, forecasts, leads, and enabled evidence sources.</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">02</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Validate fields</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Agencies map custom HubSpot fields and test live samples before the pilot is marked ready.</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">03</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Review the gap</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Managers see rep forecast, PaceLock defensible forecast, and the reason the number moved.</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">04</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Coach reps</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Risky deals become coaching prompts, not another dashboard for reps to manage.</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">05</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Set commit</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Deals move into Commit, Best Case, Pipeline, or Omit before the forecast call.</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="font-mono text-xs font-black text-[#ff5c35]">06</span>
+            <h3 class="mt-3 text-sm font-black text-slate-950">Write back</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Approved tasks, notes, close-date updates, and commit changes sync to HubSpot with audit proof.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="features" class="border-y border-slate-200 bg-white py-20">
+        <div class="mx-auto max-w-7xl px-5">
+          <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">Revenue Control Center</p>
-              <h2 class="mt-2 text-2xl font-black text-slate-50">Clean pipeline data without turning reps against the process.</h2>
-              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-500">Telemetry is assessed via stakeholder momentum, milestone validation, and predictive path drivers. Confirmed changes sync back into HubSpot.</p>
+              <p class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Evidence engine</p>
+              <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+                PaceLock checks the forecast from every angle HubSpot can support.
+              </h2>
+              <p class="mt-4 text-base leading-8 text-slate-600">
+                The product is built around one question: does the evidence support the forecast number?
+                Each signal either strengthens confidence, exposes risk, or shows the agency what must be configured.
+              </p>
             </div>
-            <div class="flex items-center gap-3 font-mono text-[11px]">
-              <span class="inline-flex items-center gap-2 text-emerald-300"><span class="h-2 w-2 rounded-full bg-emerald-400"></span> Webhooks Live</span>
-              <span class="text-slate-600">Last sync: 12 mins</span>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Forecast defensibility</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Compare rep claims, PaceLock probability, HubSpot submitted forecast, quota target, and validated forecast contribution.</p>
+              </article>
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Rep calibration</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Discount current optimism against owner-level closed-deal history, with evidence-only mode when the sample is thin.</p>
+              </article>
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Deal risk queue</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Prioritize deals by forecast gap, contact coverage, stale activity, close-date movement, stage pressure, and next manager action.</p>
+              </article>
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Marketing corroboration</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Flag when marketing warmed up more contacts than sales is working, or when high-intent leads waited too long.</p>
+              </article>
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Deal split attribution</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Avoid double-counting shared deals by attributing forecast impact to each owner when HubSpot deal splits are enabled.</p>
+              </article>
+              <article class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 class="text-base font-black text-slate-950">Currency normalization</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Normalize regional pipeline into the portal's home currency before comparing forecast to quota.</p>
+              </article>
             </div>
           </div>
 
-          <div class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            <article class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-              <p class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">Target Quota</p>
-              <p class="mt-2 font-mono text-2xl font-black text-slate-100">$1.0M</p>
-              <p class="mt-1 text-xs text-slate-600">Quarterly target</p>
-            </article>
-            <article class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-              <p class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">AI Forecast</p>
-              <p class="mt-2 font-mono text-2xl font-black text-cyan-300">$850k</p>
-              <p class="mt-1 text-xs text-slate-600">Conservative commit</p>
-            </article>
-            <article class="rounded-lg border border-red-900/60 bg-slate-950 p-4">
-              <p class="font-mono text-[10px] font-black uppercase tracking-wider text-red-400">Gap to Target</p>
-              <p class="mt-2 font-mono text-2xl font-black text-red-400">-$150k</p>
-              <p class="mt-1 text-xs text-red-400/80">Needs recovery</p>
-            </article>
-            <article class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-              <p class="font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">Pipeline Health</p>
-              <p class="mt-2 font-mono text-2xl font-black text-emerald-300">72%</p>
-              <p class="mt-1 text-xs text-slate-600">Forecast readiness</p>
-            </article>
-          </div>
-
-          <div class="mt-6 overflow-x-auto rounded-lg border border-slate-800 bg-slate-950">
-            <table class="min-w-[960px] w-full border-collapse text-left text-xs">
-              <thead class="border-b border-slate-800 bg-slate-900/70 font-mono text-[10px] font-black uppercase tracking-wider text-slate-500">
+          <div class="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+            <table class="w-full min-w-[880px] border-collapse text-left text-sm">
+              <thead class="border-b border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-wide text-slate-500">
                 <tr>
-                  <th class="p-3">Deal Baseline</th>
-                  <th class="p-3">Owner</th>
-                  <th class="p-3 text-right">Volume</th>
-                  <th class="p-3 text-center">AI Win %</th>
-                  <th class="p-3">Committee</th>
-                  <th class="p-3">Governance Status</th>
-                  <th class="p-3">Primary Risk Driver</th>
-                  <th class="p-3 text-right">Remediation</th>
+                  <th class="border-r border-slate-200 px-4 py-3">Feature</th>
+                  <th class="border-r border-slate-200 px-4 py-3">HubSpot evidence used</th>
+                  <th class="px-4 py-3">Manager takeaway</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-900 font-medium text-slate-300">
-                <tr class="transition hover:bg-slate-900/50">
-                  <td class="p-3 font-bold text-slate-100">Acme Corp Upgrade</td>
-                  <td class="p-3 text-slate-400">Sarah Jin</td>
-                  <td class="p-3 text-right font-mono">$45,000</td>
-                  <td class="p-3 text-center font-mono text-red-400">18%</td>
-                  <td class="p-3 text-slate-400">1 person</td>
-                  <td class="p-3"><span class="rounded border border-red-900/60 bg-red-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-red-300">Blocked</span></td>
-                  <td class="p-3 text-slate-400">Stagnant stage and zero inbound activity</td>
-                  <td class="p-3 text-right"><button class="action-button rounded bg-cyan-400 px-2 py-1 font-mono text-[10px] font-black uppercase text-slate-950 transition hover:bg-cyan-300">Push Task</button></td>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td class="border-r border-slate-200 px-4 py-3 font-bold text-slate-950">Native forecast comparison</td>
+                  <td class="border-r border-slate-200 px-4 py-3">HubSpot forecast submissions</td>
+                  <td class="px-4 py-3">Know the gap between the submitted forecast and the defensible number.</td>
                 </tr>
-                <tr class="transition hover:bg-slate-900/50">
-                  <td class="p-3 font-bold text-slate-100">Globex Enterprise</td>
-                  <td class="p-3 text-slate-400">Mark R.</td>
-                  <td class="p-3 text-right font-mono">$120,000</td>
-                  <td class="p-3 text-center font-mono text-amber-300">26%</td>
-                  <td class="p-3 text-slate-400">2 people</td>
-                  <td class="p-3"><span class="rounded border border-amber-900/60 bg-amber-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-amber-200">Reason Code</span></td>
-                  <td class="p-3 text-slate-400">Outsized volume and schedule slippage</td>
-                  <td class="p-3 text-right"><button class="action-button rounded border border-slate-700 bg-slate-800 px-2 py-1 font-mono text-[10px] font-black uppercase text-slate-200 transition hover:bg-slate-700">Fix Date</button></td>
+                <tr>
+                  <td class="border-r border-slate-200 px-4 py-3 font-bold text-slate-950">Lead Response SLA Radar</td>
+                  <td class="border-r border-slate-200 px-4 py-3">Leads, stage timestamps, high-intent fields</td>
+                  <td class="px-4 py-3">Spot hot leads that sat in NEW before sales worked them.</td>
                 </tr>
-                <tr class="transition hover:bg-slate-900/50">
-                  <td class="p-3 font-bold text-slate-100">Initech Pilot</td>
-                  <td class="p-3 text-slate-400">Sarah Jin</td>
-                  <td class="p-3 text-right font-mono">$15,000</td>
-                  <td class="p-3 text-center font-mono text-red-400">6%</td>
-                  <td class="p-3 text-slate-400">1 person</td>
-                  <td class="p-3"><span class="rounded border border-red-900/60 bg-red-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-red-300">Override</span></td>
-                  <td class="p-3 text-slate-400">Overdue close date and low activity</td>
-                  <td class="p-3 text-right"><button class="action-button rounded bg-cyan-400 px-2 py-1 font-mono text-[10px] font-black uppercase text-slate-950 transition hover:bg-cyan-300">End of Month</button></td>
+                <tr>
+                  <td class="border-r border-slate-200 px-4 py-3 font-bold text-slate-950">Contact coverage gap</td>
+                  <td class="border-r border-slate-200 px-4 py-3">Contacts, associations, campaign engagement</td>
+                  <td class="px-4 py-3">See when marketing engaged five contacts but sales is working one.</td>
                 </tr>
-                <tr class="transition hover:bg-slate-900/50">
-                  <td class="p-3 font-bold text-slate-100">Umbrella Expansion</td>
-                  <td class="p-3 text-slate-400">Leah P.</td>
-                  <td class="p-3 text-right font-mono">$80,000</td>
-                  <td class="p-3 text-center font-mono text-amber-300">34%</td>
-                  <td class="p-3 text-slate-400">2 people</td>
-                  <td class="p-3"><span class="rounded border border-emerald-900/60 bg-emerald-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-emerald-200">Task Allowed</span></td>
-                  <td class="p-3 text-slate-400">Activity ratio 0.42 and stage age exceeds median</td>
-                  <td class="p-3 text-right"><button class="action-button rounded bg-cyan-400 px-2 py-1 font-mono text-[10px] font-black uppercase text-slate-950 transition hover:bg-cyan-300">Push Task</button></td>
+                <tr>
+                  <td class="border-r border-slate-200 px-4 py-3 font-bold text-slate-950">Sales email freshness</td>
+                  <td class="border-r border-slate-200 px-4 py-3">One-to-one sales email engagement</td>
+                  <td class="px-4 py-3">Challenge Commit deals with no buyer reply in weeks.</td>
                 </tr>
               </tbody>
             </table>
@@ -254,194 +318,174 @@
         </div>
       </section>
 
-      <section id="recovery" class="mx-auto max-w-7xl px-5 pb-20">
-        <div class="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+      <section id="agency" class="mx-auto max-w-7xl px-5 py-20">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">Closed-Lost Recovery</p>
-            <h2 class="mt-3 text-3xl font-black text-slate-50">Find revenue that HubSpot has already stopped watching.</h2>
-            <p class="mt-4 text-sm leading-7 text-slate-400">
-              PaceLock monitors lost-deal reasons against new market signals, competitor movement, funding events, and semantic LLM analysis. Managers get a recovery queue instead of a forgotten archive.
+            <p class="text-[10px] font-black uppercase tracking-wide text-[#ff5c35]">Built for HubSpot agencies</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+              A pilot setup flow agencies can actually run.
+            </h2>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              PaceLock separates agency/admin setup from the sales manager cockpit. Agencies connect the portal,
+              validate field mappings, confirm scopes, and open the manager view only when the pilot is ready.
             </p>
           </div>
 
-          <div class="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-              <h3 class="text-sm font-black text-slate-100">Pipeline Recovery Center</h3>
-              <span class="rounded border border-cyan-800/60 bg-cyan-950/40 px-2 py-1 font-mono text-[10px] font-black uppercase text-cyan-300">Signals Active</span>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200">
+            <div class="flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-wide text-slate-500">Pilot readiness</p>
+                <h3 class="text-xl font-black text-slate-950">Ready only when the evidence path is verified.</h3>
+              </div>
+              <span class="w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase text-amber-800">
+                Setup gated
+              </span>
             </div>
 
-            <div class="mt-4 space-y-3">
-              <article class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-                <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p class="text-sm font-black text-slate-100">Acme Corporate Systems <span class="font-mono text-xs text-slate-500">($45,000)</span></p>
-                    <p class="mt-1 text-xs text-slate-500">Original loss reason: Lost to Competitor (Vendor X)</p>
-                  </div>
-                  <button class="action-button rounded bg-cyan-400 px-3 py-2 font-mono text-[10px] font-black uppercase text-slate-950 transition hover:bg-cyan-300">Re-open Discovery</button>
-                </div>
-                <p class="mt-3 rounded border border-emerald-900/60 bg-emerald-950/20 p-3 text-xs leading-6 text-slate-300">
-                  LLM resurrection trigger: Vendor X announced a mandatory cloud migration with an immediate 20% price increase.
-                </p>
-              </article>
-
-              <article class="rounded-lg border border-slate-800 bg-slate-950 p-4">
-                <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p class="text-sm font-black text-slate-100">Initech Enterprise Core <span class="font-mono text-xs text-slate-500">($85,000)</span></p>
-                    <p class="mt-1 text-xs text-slate-500">Original loss reason: No Budget / Project Shelved</p>
-                  </div>
-                  <button class="action-button rounded border border-slate-700 bg-slate-800 px-3 py-2 font-mono text-[10px] font-black uppercase text-slate-200 transition hover:bg-slate-700">Prepare Re-entry</button>
-                </div>
-                <p class="mt-3 rounded border border-emerald-900/60 bg-emerald-950/20 p-3 text-xs leading-6 text-slate-300">
-                  Signal detected: Account closed a $15M growth round, lifting the original procurement constraint.
-                </p>
-              </article>
+            <div class="mt-5 space-y-3">
+              <div class="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <span class="text-sm font-bold text-slate-900">HubSpot OAuth connected</span>
+                <span class="text-xs font-black uppercase text-emerald-700">Ready</span>
+              </div>
+              <div class="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <span class="text-sm font-bold text-slate-900">Core deal and owner scopes approved</span>
+                <span class="text-xs font-black uppercase text-emerald-700">Ready</span>
+              </div>
+              <div class="flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
+                <span class="text-sm font-bold text-slate-900">Marketing fields mapped and validated</span>
+                <span class="text-xs font-black uppercase text-blue-700">Validated</span>
+              </div>
+              <div class="flex items-center justify-between rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+                <span class="text-sm font-bold text-slate-900">Deal split attribution</span>
+                <span class="text-xs font-black uppercase text-amber-800">Requires Sales Hub Enterprise</span>
+              </div>
+              <div class="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+                <span class="text-sm font-bold text-slate-900">Manager team scoped</span>
+                <span class="text-xs font-black uppercase text-slate-600">Pending</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="moats" class="border-y border-slate-900 bg-slate-900/40 py-20">
+      <section id="trust" class="border-y border-slate-200 bg-slate-950 py-20 text-white">
         <div class="mx-auto max-w-7xl px-5">
-          <div class="max-w-3xl">
-            <p class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">Engineered for Defensibility</p>
-            <h2 class="mt-3 text-3xl font-black text-slate-50">HubSpot reports activity. PaceLock governs momentum.</h2>
-          </div>
+          <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-wide text-orange-300">Governed by design</p>
+              <h2 class="mt-3 text-3xl font-black tracking-tight md:text-4xl">
+                PaceLock looks first, asks the manager to approve, then writes back to HubSpot.
+              </h2>
+              <p class="mt-4 text-base leading-8 text-slate-300">
+                Reps stay in HubSpot. Managers use PaceLock for review, coaching, forecast commit, and approved write-back actions.
+              </p>
+            </div>
 
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="rounded-xl border border-slate-800 bg-slate-950 p-6">
-              <p class="font-mono text-xs font-black text-cyan-300">01 / Activity Network Velocity</p>
-              <h3 class="mt-4 text-lg font-black text-slate-100">Committee expansion over time</h3>
-              <p class="mt-3 text-sm leading-7 text-slate-500">Tracks whether a deal is single-threaded or expanding across real stakeholders, using continuous snapshots HubSpot reporting can overwrite.</p>
-            </article>
-            <article class="rounded-xl border border-slate-800 bg-slate-950 p-6">
-              <p class="font-mono text-xs font-black text-cyan-300">02 / Governed Write-Back</p>
-              <h3 class="mt-4 text-lg font-black text-slate-100">API-level process guardrails</h3>
-              <p class="mt-3 text-sm leading-7 text-slate-500">High-risk close-date changes and stage moves are guided by reason codes and validation logic before they sync into HubSpot.</p>
-            </article>
-            <article class="rounded-xl border border-slate-800 bg-slate-950 p-6">
-              <p class="font-mono text-xs font-black text-cyan-300">03 / Inline CRM Cards</p>
-              <h3 class="mt-4 text-lg font-black text-slate-100">No adoption tax for reps</h3>
-              <p class="mt-3 text-sm leading-7 text-slate-500">Risk labels, next actions, and recovery buttons appear inside the HubSpot deal workspace where sales teams already work.</p>
-            </article>
+            <div class="grid gap-4 md:grid-cols-2">
+              <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <h3 class="text-base font-black">Manager-approved write-back</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Create HubSpot tasks, notes, close-date updates, and manager commit changes only after setup is healthy.</p>
+              </article>
+              <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <h3 class="text-base font-black">Audit trail</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Every approved action records who approved it, what changed, when it happened, and the HubSpot object affected.</p>
+              </article>
+              <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <h3 class="text-base font-black">Tenant isolation</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Tenant-scoped records, signed auth, encrypted tokens, and readiness gates keep customer data boundaries explicit.</p>
+              </article>
+              <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <h3 class="text-base font-black">Retry protection</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Redis-backed idempotency prevents duplicate HubSpot tasks or property updates when managers retry actions.</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" class="mx-auto max-w-4xl px-5 py-20">
-        <div class="text-center">
-          <p class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">Security Architecture</p>
-          <h2 class="mt-3 text-3xl font-black text-slate-50">Designed for enterprise CRM data boundaries.</h2>
-        </div>
-
-        <div class="mt-8 space-y-3">
-          <details class="group rounded-xl border border-slate-800 bg-slate-900 p-5" open>
-            <summary class="cursor-pointer list-none text-sm font-black text-slate-100">How does PaceLock protect sensitive CRM records?</summary>
-            <p class="mt-3 text-sm leading-7 text-slate-500">PaceLock follows least-privilege access patterns and reads only analytical parameters such as deal stage, timestamp metrics, amount, activity cadence, and governance state. It does not require raw customer email bodies or phone data for the core cockpit.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <summary class="cursor-pointer list-none text-sm font-black text-slate-100">Are tenant datasets isolated?</summary>
-            <p class="mt-3 text-sm leading-7 text-slate-500">Yes. The architecture uses tenant-scoped records, Postgres Row-Level Security, encrypted token storage, and strict session context for sync and forecasting queries.</p>
-          </details>
-          <details class="group rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <summary class="cursor-pointer list-none text-sm font-black text-slate-100">Are internal notes used to train public models?</summary>
-            <p class="mt-3 text-sm leading-7 text-slate-500">No. Unstructured notes are processed to populate structured JSON analysis fields. The workflow is designed to be stateless and does not use customer records for public model training.</p>
-          </details>
-        </div>
-      </section>
-
-      <section id="pilot" class="mx-auto max-w-xl border-t border-slate-900 bg-slate-900/10 px-6 py-20">
-        <div class="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl">
-          <div class="pointer-events-none absolute left-0 top-0 h-32 w-32 rounded-full bg-cyan-950/20 blur-3xl"></div>
-
+      <section id="pilot" class="mx-auto max-w-xl px-6 py-20">
+        <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl shadow-slate-200">
           <div class="relative mb-6 text-center">
-            <h3 class="font-mono text-sm font-bold uppercase tracking-wider text-cyan-400">Initialize System Pilot</h3>
-            <p class="mt-1 text-xs text-slate-400">Connect your workspace securely to calculate your pipeline integrity score.</p>
+            <h3 class="text-sm font-black uppercase tracking-wide text-[#ff5c35]">Request a PaceLock pilot</h3>
+            <p class="mt-2 text-sm text-slate-600">Start with a HubSpot sandbox or agency-managed client workspace.</p>
           </div>
 
           <form id="pilotForm" class="relative space-y-4 text-xs" novalidate>
             <div>
-              <label for="pilotCompany" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Company Name</label>
+              <label for="pilotCompany" class="mb-1 block text-[10px] font-bold uppercase text-slate-500">Company name</label>
               <input
                 type="text"
                 id="pilotCompany"
-                placeholder="Acme Logistics Enterprise"
-                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
+                placeholder="Acme Logistics"
+                class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 font-medium text-slate-900 outline-none transition focus:border-[#ff5c35] focus:ring-2 focus:ring-orange-100"
               />
-              <p id="error-company" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
+              <p id="error-company" class="mt-1 hidden text-[10px] font-medium text-red-600"></p>
             </div>
             <div>
-              <label for="pilotPortal" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">HubSpot Portal ID</label>
+              <label for="pilotPortal" class="mb-1 block text-[10px] font-bold uppercase text-slate-500">HubSpot portal ID</label>
               <input
                 type="text"
                 id="pilotPortal"
                 inputmode="numeric"
                 placeholder="e.g., 9991234"
-                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-mono text-slate-200 outline-none transition focus:border-cyan-500"
+                class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 font-mono text-slate-900 outline-none transition focus:border-[#ff5c35] focus:ring-2 focus:ring-orange-100"
               />
-              <p id="error-portal" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
+              <p id="error-portal" class="mt-1 hidden text-[10px] font-medium text-red-600"></p>
             </div>
             <div>
-              <label for="pilotEmail" class="mb-1 block font-mono text-[10px] font-bold uppercase text-slate-500">Corporate Contact Email</label>
+              <label for="pilotEmail" class="mb-1 block text-[10px] font-bold uppercase text-slate-500">Corporate contact email</label>
               <input
                 type="text"
                 id="pilotEmail"
                 placeholder="revops@yourcompany.com"
-                class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 font-medium text-slate-200 outline-none transition focus:border-cyan-500"
+                class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 font-medium text-slate-900 outline-none transition focus:border-[#ff5c35] focus:ring-2 focus:ring-orange-100"
               />
-              <p id="error-email" class="mt-1 hidden font-mono text-[10px] font-medium text-red-400"></p>
+              <p id="error-email" class="mt-1 hidden text-[10px] font-medium text-red-600"></p>
             </div>
 
-            <div class="pt-2">
-              <button
-                id="submitBtn"
-                type="submit"
-                class="w-full cursor-pointer rounded bg-cyan-500 py-2.5 font-mono font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                Provision Free Pipeline Audit
-              </button>
-            </div>
+            <button
+              id="submitBtn"
+              type="submit"
+              class="w-full cursor-pointer rounded-md bg-[#ff5c35] py-3 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-orange-100 transition hover:bg-[#e54824] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              Request forecast defensibility pilot
+            </button>
           </form>
 
           <div id="pilotSuccess" class="relative hidden py-6 text-center animate-slide-up">
-            <span class="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-800 bg-emerald-950 font-mono text-sm font-bold text-emerald-400">✓</span>
-            <h4 class="font-mono text-xs font-bold uppercase tracking-wide text-emerald-400">Workspace Environment Queued</h4>
-            <p class="mx-auto mt-1 max-w-xs text-[11px] text-slate-300">
-              Your sandbox context configuration is active. Continue to HubSpot authorization to start the secure sync.
+            <span class="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-sm font-bold text-emerald-700">✓</span>
+            <h4 class="text-xs font-bold uppercase tracking-wide text-emerald-700">Workspace queued</h4>
+            <p class="mx-auto mt-2 max-w-xs text-xs text-slate-600">
+              Continue to HubSpot authorization to start the secure setup flow.
             </p>
             <a
               id="pilotAuthLink"
               href="#"
-              class="mt-4 inline-flex rounded bg-cyan-500 px-4 py-2 font-mono text-[11px] font-bold text-slate-950 shadow-md shadow-cyan-950/40 transition hover:bg-cyan-600"
+              class="mt-4 inline-flex rounded-md bg-[#ff5c35] px-4 py-2 text-xs font-bold text-white shadow-md shadow-orange-100 transition hover:bg-[#e54824]"
             >
               Continue to HubSpot
             </a>
           </div>
 
-          <div id="pilotError" class="relative hidden rounded-lg border border-red-900/60 bg-red-950/30 p-3 text-xs text-red-200"></div>
+          <div id="pilotError" class="relative hidden rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-700"></div>
 
           <div id="pilotLoading" class="relative hidden py-6 text-center">
-            <p class="font-mono text-xs font-bold uppercase tracking-wide text-cyan-300">Provisioning secure pilot workspace...</p>
-            <p class="mx-auto mt-1 max-w-xs text-[11px] text-slate-400">Creating tenant isolation, OAuth state, and onboarding queue.</p>
+            <p class="text-xs font-bold uppercase tracking-wide text-[#ff5c35]">Provisioning secure pilot workspace...</p>
+            <p class="mx-auto mt-1 max-w-xs text-xs text-slate-500">Creating tenant isolation, OAuth state, and onboarding queue.</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-slate-900 py-8">
-      <div class="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-5 text-xs text-slate-600 md:flex-row md:items-center">
-        <p class="font-mono font-bold uppercase tracking-wider text-slate-500">PaceLock Revenue Intelligence</p>
-        <p>HubSpot stays the CRM of record. PaceLock keeps the next action honest.</p>
+    <footer class="border-t border-slate-200 bg-white py-8">
+      <div class="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-5 text-xs text-slate-500 md:flex-row md:items-center">
+        <p class="font-black uppercase tracking-wide text-slate-700">PaceLock</p>
+        <p>HubSpot stays the CRM of record. PaceLock makes the forecast defensible.</p>
       </div>
     </footer>
 
-    <div id="toast" class="pointer-events-none fixed bottom-5 right-5 hidden max-w-sm rounded-xl border border-cyan-800/60 bg-slate-900 p-4 shadow-2xl shadow-slate-950/70">
-      <p class="font-mono text-[10px] font-black uppercase tracking-wider text-cyan-300">Demo action queued</p>
-      <p class="mt-1 text-xs text-slate-300">In production this action routes through PaceLock GraphQL and syncs to HubSpot.</p>
-    </div>
-
     <script>
-      const PACELOCK_GRAPHQL_ENDPOINT = 'https://beat-hubspot-api.onrender.com/graphql';
+      const PACELOCK_GRAPHQL_ENDPOINT = 'https://pacelock-api.onrender.com/graphql';
       const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const PUBLIC_DOMAINS = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
       const fieldIdMap = {
@@ -449,31 +493,18 @@
         portal: 'pilotPortal',
         email: 'pilotEmail'
       };
-      const toast = document.getElementById('toast');
-
-      document.querySelectorAll('.action-button').forEach((button) => {
-        button.addEventListener('click', () => {
-          toast.classList.remove('hidden');
-          toast.classList.add('animate-slide-up');
-          window.clearTimeout(window.__paceLockToastTimer);
-          window.__paceLockToastTimer = window.setTimeout(() => {
-            toast.classList.add('hidden');
-            toast.classList.remove('animate-slide-up');
-          }, 2600);
-        });
-      });
 
       function setFieldState(input, errorEl, errorMessage) {
-        input.classList.remove('border-slate-800', 'border-red-500/80', 'border-emerald-800/80', 'focus:border-red-500', 'focus:border-cyan-500');
+        input.classList.remove('border-slate-300', 'border-red-500', 'border-emerald-500', 'focus:border-red-500', 'focus:border-[#ff5c35]');
 
         if (errorMessage) {
-          input.classList.add('border-red-500/80', 'focus:border-red-500');
+          input.classList.add('border-red-500', 'focus:border-red-500');
           errorEl.textContent = `x ${errorMessage}`;
           errorEl.classList.remove('hidden');
           return false;
         }
 
-        input.classList.add('border-emerald-800/80', 'focus:border-cyan-500');
+        input.classList.add('border-emerald-500', 'focus:border-[#ff5c35]');
         errorEl.textContent = '';
         errorEl.classList.add('hidden');
         return true;
@@ -486,13 +517,13 @@
         let errorMessage = '';
 
         if (fieldName === 'company') {
-          if (value.length === 0) errorMessage = 'Company Name is required for workspace isolation.';
-          else if (value.length < 2) errorMessage = 'Company Name must be at least 2 characters.';
+          if (value.length === 0) errorMessage = 'Company name is required for workspace isolation.';
+          else if (value.length < 2) errorMessage = 'Company name must be at least 2 characters.';
         }
 
         if (fieldName === 'portal') {
           if (value.length === 0) errorMessage = 'HubSpot Portal ID is required to route your data.';
-          else if (/\D/.test(value)) errorMessage = 'Portal ID must contain numbers only. Letters and symbols are blocked.';
+          else if (/\D/.test(value)) errorMessage = 'Portal ID must contain numbers only.';
           else if (value.length < 5 || value.length > 12) errorMessage = 'Portal IDs are typically 5 to 12 digits.';
         }
 
@@ -502,7 +533,7 @@
           else {
             const domain = value.split('@')[1].toLowerCase();
             if (PUBLIC_DOMAINS.includes(domain)) {
-              errorMessage = 'Public email domains are blocked. Use an enterprise corporate email.';
+              errorMessage = 'Use an enterprise corporate email.';
             }
           }
         }
@@ -529,7 +560,6 @@
         const isEmailValid = validateField('email');
 
         if (!isCompanyValid || !isPortalValid || !isEmailValid) {
-          console.warn('API submission aborted: validation failed.');
           return;
         }
 
@@ -540,7 +570,7 @@
         errorBox.classList.add('hidden');
         errorBox.textContent = '';
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Initializing Framework Link...';
+        submitBtn.textContent = 'Initializing pilot...';
         form.classList.add('hidden');
         loading.classList.remove('hidden');
 
@@ -590,7 +620,7 @@
           loading.classList.add('hidden');
           form.classList.remove('hidden');
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Provision Free Pipeline Audit';
+          submitBtn.textContent = 'Request forecast defensibility pilot';
           errorBox.textContent = error instanceof Error ? error.message : 'Failed to connect to PaceLock provisioning.';
           errorBox.classList.remove('hidden');
         }
